@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Main-Class>com.example.Server.Server</Main-Class> <!-- Modifica con il tuo nome di classe -->
+                            <Main-Class>.Server.Server</Main-Class> <!-- Modifica con il nome di classe -->
                         </manifestEntries>
                     </archive>
                 </configuration>

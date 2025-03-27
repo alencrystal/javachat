@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>ChatApp</artifactId>
+    <artifactId>demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>23</maven.compiler.source>
+        <maven.compiler.target>23</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -23,7 +23,7 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
-                            <Main-Class>.Server.Server</Main-Class> <!-- Modifica con il nome di classe -->
+                            <Main-Class>server.Server</Main-Class> <!-- Modifica con il tuo nome di classe -->
                         </manifestEntries>
                     </archive>
                 </configuration>
@@ -31,8 +31,8 @@
         </plugins>
     </build>
 
-
     <dependencies>
+
         <!-- JPA e Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -52,6 +52,24 @@
             <groupId>jakarta.persistence</groupId>
             <artifactId>jakarta.persistence-api</artifactId>
             <version>3.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.9.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.6</version>
         </dependency>
     </dependencies>
 

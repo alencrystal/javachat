@@ -3,7 +3,7 @@ version: "3.8"
 services:
   db:
     image: postgres:17
-    restart: always
+    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -11,7 +11,17 @@ services:
     ports:
       - "5433:5433"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    env_file:
+      - .pgadmin-env
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
 
   backend:
     build: .

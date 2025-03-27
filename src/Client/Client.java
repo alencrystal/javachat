@@ -27,6 +27,8 @@ public class Client {
     private JButton sendButton;
     private JList<String> userList;
     private DefaultListModel userListModel;
+    private JButton darkModeButton;
+
 
     public Client(){
         frame = new JFrame("Spaichat");
@@ -35,10 +37,13 @@ public class Client {
         messageField = new JTextField("Enter text...", 30);
         messageField.setForeground(Color.gray);
         sendButton = new JButton("send");
+        darkModeButton = new JButton("mode");
+        
 
         JPanel panel = new JPanel();
         panel.add(messageField);
         panel.add(sendButton);
+        panel.add(darkModeButton);
 
         userListModel = new DefaultListModel<>();
         userList = new JList<>(userListModel);
@@ -46,6 +51,7 @@ public class Client {
         JPanel userListPanel = new JPanel();
         userListPanel.add(userList);
         userListPanel.setPreferredSize(new Dimension(100, 0));
+        userListPanel.setBackground(Color.LIGHT_GRAY);
 
         frame.getContentPane().add(chatArea, BorderLayout.CENTER);
         frame.getContentPane().add(panel, BorderLayout.SOUTH);
@@ -75,6 +81,26 @@ public class Client {
                 
             }
         });
+        sendButton.addActionListener(event -> sendMessage());
+        messageField.addActionListener(event -> sendMessage());
+        darkModeButton.addActionListener(event -> {
+            if(chatArea.getBackground() == Color.WHITE){
+                chatArea.setBackground(Color.BLACK);
+                chatArea.setForeground(Color.WHITE);
+                userListPanel.setBackground(Color.DARK_GRAY);
+                userListPanel.setForeground(Color.WHITE);
+                panel.setBackground(Color.DARK_GRAY);
+            }
+            else {
+                chatArea.setBackground(Color.WHITE);
+                chatArea.setForeground(Color.BLACK);
+                userListPanel.setBackground(Color.LIGHT_GRAY);
+                userListPanel.setForeground(Color.BLACK);
+                panel.setBackground(Color.LIGHT_GRAY);
+            }
+        });
+
+        
 
 
         connectToServer();
